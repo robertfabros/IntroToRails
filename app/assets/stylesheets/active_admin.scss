@@ -11,6 +11,65 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "active_admin/navbar";
+@import "active_admin/misc";
+
+// Custom styles for ActiveAdmin dark mode
+body.active_admin {
+  @apply bg-gray-900 text-white;
+}
+
+.active_admin .header {
+  @apply bg-gray-800 text-white;
+}
+
+.active_admin .sidebar {
+  @apply bg-gray-800 text-white;
+}
+
+.active_admin .table_tools {
+  @apply bg-gray-700 text-white;
+}
+
+.active_admin .filters input,
+.active_admin .filters select {
+  @apply bg-gray-700 text-white;
+}
+
+.active_admin .filters {
+  @apply bg-gray-800 text-white;
+}
+
+.active_admin .index_table thead th {
+  @apply bg-gray-700 text-white;
+}
+
+.active_admin .index_table tbody tr {
+  @apply bg-gray-800 text-white;
+}
+
+.active_admin .index_table tbody tr:hover {
+  @apply bg-gray-700 text-white;
+}
+
+.active_admin .footer {
+  @apply bg-gray-800 text-white;
+}
+
+.active_admin .index_content .pagination_information,
+.active_admin .index_content .pagination {
+  @apply bg-gray-900 text-white;
+}
+
+.active_admin .index_content .pagination a,
+.active_admin .index_content .pagination span {
+  @apply bg-gray-700 text-white;
+}
+
+
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
 //

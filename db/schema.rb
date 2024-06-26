@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_25_202834) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_26_185753) do
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -65,6 +65,40 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_25_202834) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "districts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "neighbourhoods", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parks", force: :cascade do |t|
+    t.string "name"
+    t.integer "location_id", null: false
+    t.integer "neighbourhood_id", null: false
+    t.integer "district_id", null: false
+    t.string "cca"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["district_id"], name: "index_parks_on_district_id"
+    t.index ["location_id"], name: "index_parks_on_location_id"
+    t.index ["neighbourhood_id"], name: "index_parks_on_neighbourhood_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "parks", "districts"
+  add_foreign_key "parks", "locations"
+  add_foreign_key "parks", "neighbourhoods"
 end
